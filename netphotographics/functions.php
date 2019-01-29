@@ -18,7 +18,7 @@ $persona = safe_glob('*', GLOB_ONLYDIR);
 chdir($cwd);
 $personalities = array();
 foreach ($persona as $personality) {
-	if (file_exists(SERVERPATH . '/' . THEMEFOLDER . '/effervescence+/' . $personality . '/functions.php'))
+	if (file_exists(SERVERPATH . '/' . THEMEFOLDER . '/netphotographics/' . $personality . '/functions.php'))
 		$personalities[ucfirst(str_replace('_', ' ', $personality))] = $personality;
 }
 
@@ -61,18 +61,18 @@ if (!in_array($personality, $personalities)) {
 if (($_ef_menu = getOption('netPhotoGraphics_menu')) == 'effervescence' || $_ef_menu == 'zenpage') {
 	enableExtension('print_album_menu', 1 | THEME_PLUGIN, false);
 }
-require_once(SERVERPATH . '/' . THEMEFOLDER . '/effervescence+/' . $personality . '/functions.php');
+require_once(SERVERPATH . '/' . THEMEFOLDER . '/netphotographics/' . $personality . '/functions.php');
 $_oneImagePage = $handler->onePage();
 $_zp_page_check = 'my_checkPageValidity';
 
-define('_IMAGE_PATH', WEBPATH . '/' . THEMEFOLDER . '/effervescence+/images/');
+define('_IMAGE_PATH', WEBPATH . '/' . THEMEFOLDER . '/netphotographics/images/');
 
 function EF_head() {
 	global $themeColor;
 	if (!$themeColor) {
 		$themeColor = getOption('Theme_colors');
 	}
-	$basePath = SERVERPATH . '/' . THEMEFOLDER . '/effervescence+/';
+	$basePath = SERVERPATH . '/' . THEMEFOLDER . '/netphotographics/';
 	$csfile = $basePath . 'data/styles/' . $themeColor . '.css';
 	$genfile = $basePath . 'styles/' . $themeColor . '.txt';
 	if (!file_exists($genfile)) {
@@ -83,9 +83,9 @@ function EF_head() {
 		eval(file_get_contents($genfile));
 		$css = file_get_contents($basePath . '/base.css');
 		$css = strtr($css, $tr);
-		$css = preg_replace('|\.\./images/|', WEBPATH . '/' . THEMEFOLDER . '/effervescence+/images/', $css);
-		$common = file_get_contents(SERVERPATH . '/' . THEMEFOLDER . '/effervescence+/common.css');
-		$common = preg_replace('|images/|', WEBPATH . '/' . THEMEFOLDER . '/effervescence+/images/', $common);
+		$css = preg_replace('|\.\./images/|', WEBPATH . '/' . THEMEFOLDER . '/netphotographics/images/', $css);
+		$common = file_get_contents(SERVERPATH . '/' . THEMEFOLDER . '/netphotographics/common.css');
+		$common = preg_replace('|images/|', WEBPATH . '/' . THEMEFOLDER . '/netphotographics/images/', $common);
 
 		$buffer = preg_replace('~/\*[^*]*\*+([^/][^*]*\*+)*/~', '', $common . $css);
 		$buffer = str_replace(': ', ':', $buffer);
@@ -94,7 +94,7 @@ function EF_head() {
 		mkdir_recursive($basePath . '/data/styles', FOLDER_MOD);
 		file_put_contents($csfile, $buffer);
 	}
-	scriptLoader(SERVERPATH . '/' . THEMEFOLDER . '/effervescence+/data/styles/' . $themeColor . '.css');
+	scriptLoader(SERVERPATH . '/' . THEMEFOLDER . '/netphotographics/data/styles/' . $themeColor . '.css');
 	?>
 	<script type="text/javascript">
 		// <!-- <![CDATA[
