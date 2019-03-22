@@ -12,7 +12,8 @@ require_once(dirname(__FILE__) . '/functions.php');
 
 class ThemeOptions {
 
-	function __construct() {
+	function __construct($setDefaultOptions) {
+
 		$me = basename(dirname(__FILE__));
 		setThemeOptionDefault('Theme_logo', 'A multi-media oriented Content Management System');
 		setThemeOptionDefault('Allow_search', true);
@@ -45,7 +46,7 @@ class ThemeOptions {
 			cacheManager::addCacheSize($me, getThemeOption('thumb_size'), NULL, NULL, NULL, NULL, NULL, NULL, true, NULL, NULL, NULL);
 			cacheManager::addCacheSize($me, NULL, 180, 80, NUll, NULL, NULL, NULL, true, NULL, NULL, NULL);
 		}
-		if (function_exists('createMenuIfNotExists')) {
+		if (function_exists('menuExists') && !menuExists('netPhotoGraphics')) {
 			$menuset = array(
 					array('title' => 'a:1:{s:5:"en_US";s:5:"links";}', 'link' => '', 'include_li' => '1', 'type' => 'menulabel', 'nesting' => '0', 'show' => '1', 'span_class' => '', 'span_id' => ''),
 					array('title' => 'a:1:{s:5:"en_US";s:5:"Forum";}', 'link' => 'https://netphotographics.org/forum/', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
@@ -59,7 +60,7 @@ class ThemeOptions {
 					array('title' => 'a:1:{s:5:"en_US";s:10:"Repository";}', 'link' => 'https://github.com/ZenPhoto20/netPhotoGraphics', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
 					array('title' => 'Development', 'link' => 'https://github.com/sbillard/netPhotoGraphics-DEV', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '')
 			);
-			createMenuIfNotExists($menuset, 'netPhotoGraphics');
+			createMenu($menuset, 'netPhotoGraphics');
 		}
 	}
 
