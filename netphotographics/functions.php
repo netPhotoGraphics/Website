@@ -3,7 +3,6 @@
 
 zp_register_filter('themeSwitcher_head', 'switcher_head');
 zp_register_filter('themeSwitcher_Controllink', 'switcher_controllink');
-zp_register_filter('iconColor', 'iconColor');
 zp_register_filter('theme_head', 'EF_head', 0);
 
 define('ALBUM_THMB_WIDTH', 170);
@@ -218,7 +217,7 @@ function printHeadingImage($randomImage) {
 			$high = min(180, $randomImage->getHeight());
 		}
 		echo "<a href='" . $randomImageURL . "' title='" . gettext('Random picture...') . "'>";
-		$html = "<img src='" . pathurlencode($randomImage->getCustomImage(NULL, $wide, $high, $wide, $high, NULL, NULL, !getOption('Watermark_head_image'))) .
+		$html = "<img src='" . pathurlencode($randomImage->getCustomImage(NULL, $wide, $high, $wide, $high, 0, 0, !getOption('Watermark_head_image'))) .
 						"' width='$wide' height='$high' alt=" . '"' .
 						html_encode($randomAlt1) .
 						":\n" . html_encode($randomImage->getTitle()) .
