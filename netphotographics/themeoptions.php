@@ -48,16 +48,16 @@ class ThemeOptions {
 		}
 		if (function_exists('menuExists') && !menuExists('netPhotoGraphics')) {
 			$menuset = array(
-					array('title' => 'a:1:{s:5:"en_US";s:5:"links";}', 'link' => '', 'include_li' => '1', 'type' => 'menulabel', 'nesting' => '0', 'show' => '1', 'span_class' => '', 'span_id' => ''),
-					array('title' => 'a:1:{s:5:"en_US";s:5:"Forum";}', 'link' => 'https://netphotographics.org/forum/', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
-					array('title' => 'a:1:{s:5:"en_US";s:4:"Demo";}', 'link' => 'demo/', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
+					array('title' => 'links', 'link' => '', 'include_li' => '1', 'type' => 'menulabel', 'nesting' => '0', 'show' => '1', 'span_class' => '', 'span_id' => ''),
+					array('title' => 'Forum', 'link' => 'https://netphotographics.org/forum/', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
+					array('title' => 'Demo', 'link' => 'demo/', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
 					array('title' => 'Admin demo', 'link' => 'openAdmin/admin', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
 					array('title' => 'screenshots', 'link' => 'screenshots', 'include_li' => '1', 'type' => 'album', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
-					array('title' => 'a:1:{s:5:"en_US";s:10:"User guide";}', 'link' => './docs/user guide.pdf', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
-					array('title' => 'a:1:{s:5:"en_US";s:8:"Releases";}', 'link' => 'https://github.com/ZenPhoto20/netPhotoGraphics/releases', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
+					array('title' => 'User guide', 'link' => './docs/user guide.pdf', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
+					array('title' => 'Releases', 'link' => 'printNPGgitHubLink(\'releases\',\'Releases\');', 'include_li' => '1', 'type' => 'menufunction', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
 					array('title' => '', 'link' => 'release-notes.htm', 'include_li' => '1', 'type' => 'page', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
-					array('title' => 'a:1:{s:5:"en_US";s:11:"Change list";}', 'link' => 'https://github.com/ZenPhoto20/netPhotoGraphics/commits/master', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
-					array('title' => 'a:1:{s:5:"en_US";s:10:"Repository";}', 'link' => 'https://github.com/ZenPhoto20/netPhotoGraphics', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
+					array('title' => 'Change List', 'link' => 'printNPGgitHubLink(\'commits/master\',\'Change list\');', 'include_li' => '1', 'type' => 'menufunction', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
+					array('title' => 'Repository', 'link' => 'printNPGgitHubLink(\'\',\'Repository\');', 'include_li' => '1', 'type' => 'menufunction', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
 					array('title' => 'Development', 'link' => 'https://github.com/sbillard/netPhotoGraphics-DEV', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '')
 			);
 			createMenu($menuset, 'netPhotoGraphics');
@@ -66,7 +66,7 @@ class ThemeOptions {
 
 	function getOptionsSupported() {
 		global $personalities;
-		require_once(SERVERPATH . '/' . ZENFOLDER . '/' . PLUGIN_FOLDER . '/image_effects.php');
+		require_once(CORE_SERVERPATH . PLUGIN_FOLDER . '/image_effects.php');
 
 		$note = '<p class="notebox">' . gettext('<strong>Note:</strong> This option is valid only if the Zenpage plugin is enabled or the Separate gallery index option is checked. Of course the <em>menu_manager</em> plugin must also be enabled.') . '</p>';
 

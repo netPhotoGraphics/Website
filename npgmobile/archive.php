@@ -6,25 +6,25 @@ if (!defined('WEBPATH'))
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php zp_apply_filter('theme_head'); ?>
+		<?php npgFilters::apply('theme_head'); ?>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<?php
-		scriptLoader($_zp_themeroot . '/style.css');
+		scriptLoader($_themeroot . '/style.css');
 		jqm_loadScripts();
 		?>
 	</head>
 
 	<body>
-		<?php zp_apply_filter('theme_body_open'); ?>
+		<?php npgFilters::apply('theme_body_open'); ?>
 
 		<div data-role="page" id="mainpage">
 
 			<?php jqm_printMainHeaderNav(); ?>
 
 			<div class="ui-content" role="main">
-				<img src="<?php echo $_zp_gallery->getSiteLogo(); ?>" />
+				<img src="<?php echo $_gallery->getSiteLogo(); ?>" />
 				<br />
 				<?php echo gettext('A multi-media oriented Content Management System'); ?>
 				<br /><br />
@@ -37,7 +37,7 @@ if (!defined('WEBPATH'))
 						<?php printAllDates(); ?>
 						<hr />
 						<?php
-						if (extensionEnabled('zenpage') && getNumNews(true)) {
+						if (extensionEnabled('zenpage') && hasNews()) {
 							?>
 							<h3><?php echo NEWS_LABEL; ?></h3>
 							<?php printNewsArchive("archive"); ?>
@@ -60,7 +60,7 @@ if (!defined('WEBPATH'))
 			<?php jqm_printBacktoTopLink(); ?>
 			<?php jqm_printFooterNav(); ?>
 		</div><!-- /page -->
-		<?php zp_apply_filter('theme_body_close');
+		<?php npgFilters::apply('theme_body_close');
 		?>
 	</body>
 </html>

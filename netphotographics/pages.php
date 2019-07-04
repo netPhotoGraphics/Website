@@ -3,13 +3,13 @@
 if (!defined('WEBPATH'))
 	die();
 if (class_exists('CMS')) {
-	$npgHome = strtolower(stripSuffix($_zp_current_page->getTitleLink())) == 'npghome';
+	$npgHome = strtolower(stripSuffix($_CMS_current_page->getTitleLink())) == 'npghome';
 	?>
 	<!DOCTYPE html>
 	<html>
 		<head>
 			<?php
-			zp_apply_filter('theme_head');
+			npgFilters::apply('theme_head');
 			if (class_exists('RSS')) {
 				if ($npgHome) {
 					printRSSHeaderLink('Gallery', 'netPhotoGraphics');
@@ -21,7 +21,7 @@ if (class_exists('CMS')) {
 		</head>
 
 		<body onload="blurAnchors()">
-			<?php zp_apply_filter('theme_body_open'); ?>
+			<?php npgFilters::apply('theme_body_open'); ?>
 
 			<!-- Wrap Header -->
 			<div id="header">
@@ -91,13 +91,13 @@ if (class_exists('CMS')) {
 
 			<?php
 			printFooter();
-			zp_apply_filter('theme_body_close');
+			npgFilters::apply('theme_body_close');
 			?>
 
 		</body>
 	</html>
 	<?php
 } else {
-	include(SERVERPATH . '/' . ZENFOLDER . '/404.php');
+	include(CORE_SERVERPATH . '404.php');
 }
 ?>

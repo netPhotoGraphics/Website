@@ -4,7 +4,7 @@
  */
 // initialization stuff
 
-if (zp_has_filter('theme_head', 'colorbox::css')) {
+if (npgFilters::has_filter('theme_head', 'colorbox::css')) {
 	$handler = new ef_colorbox();
 } else {
 	require_once(SERVERPATH . '/' . THEMEFOLDER . '/effervescence+/image_page/functions.php');
@@ -20,7 +20,7 @@ class ef_colorbox {
 		return false;
 	}
 
-	function theme_head($_zp_themeroot) {
+	function theme_head($_themeroot) {
 		?>
 		<script type="text/javascript">
 			// <!-- <![CDATA[
@@ -37,12 +37,12 @@ class ef_colorbox {
 		<?php
 	}
 
-	function theme_bodyopen($_zp_themeroot) {
+	function theme_bodyopen($_themeroot) {
 
 	}
 
 	function theme_content($map) {
-		global $_zp_current_image, $points;
+		global $_current_image, $points;
 		?>
 		<!-- Colorbox section -->
 		<div id="content">
@@ -65,7 +65,7 @@ class ef_colorbox {
 							<div class="imagethumb">
 								<?php
 								if ($map) {
-									$coord = getGeoCoord($_zp_current_image);
+									$coord = simpleMap::getCoord($_current_image);
 									if ($coord) {
 										$points[] = $coord;
 									}
@@ -87,16 +87,9 @@ class ef_colorbox {
 					}
 					echo '<div class="clearage"></div>';
 					if (!empty($points) && $map) {
-
-						function map_callback($map) {
-							global $points;
-							foreach ($points as $coord) {
-								addGeoCoord($map, $coord);
-							}
-						}
 						?>
 						<div id="map_link">
-							<?php printGoogleMap(NULL, NULL, NULL, 'album_page', 'map_callback'); ?>
+							<?php simpleMap::printMap($points, array('obj' => 'album_page')); ?>
 						</div>
 						<?php
 					}

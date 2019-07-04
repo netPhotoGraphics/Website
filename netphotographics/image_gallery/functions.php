@@ -15,12 +15,12 @@ class imagegallery {
 		return true;
 	}
 
-	function theme_head($_zp_themeroot) {
-		scriptLoader(SERVERPATH . '/' . ZENFOLDER . '/' . COMMON_FOLDER . '/adGallery/jquery.ad-gallery.css');
-		scriptLoader(SERVERPATH . '/' . ZENFOLDER . '/' . COMMON_FOLDER . '/adGallery/jquery.ad-gallery.js');
+	function theme_head($_themeroot) {
+		scriptLoader(CORE_SERVERPATH . COMMON_FOLDER . '/adGallery/jquery.ad-gallery.css');
+		scriptLoader(CORE_SERVERPATH . COMMON_FOLDER . '/adGallery/jquery.ad-gallery.js');
 	}
 
-	function theme_bodyopen($_zp_themeroot) {
+	function theme_bodyopen($_themeroot) {
 		$location = getOption('netPhotoGraphics_caption_location');
 		?>
 		<script type="text/javascript">
@@ -36,7 +36,7 @@ class imagegallery {
 								display_next_and_prev: true, // Can you navigate by clicking on the left/right on the image?
 								display_back_and_forward: true, // Are you allowed to scroll the thumb list?
 								scroll_jump: 0, // If 0, it jumps the width of the container
-								loader_image: '<?php echo WEBPATH . '/' . ZENFOLDER . '/' . COMMON_FOLDER; ?>/adGallery/loader.gif',
+								loader_image: '<?php echo WEBPATH . '/' . CORE_FOLDER . '/' . COMMON_FOLDER; ?>/adGallery/loader.gif',
 								slideshow: {
 									enable: true,
 									autostart: true,
@@ -90,7 +90,7 @@ class imagegallery {
 	}
 
 	function theme_content($map) {
-		global $_zp_current_image, $_zp_current_album, $points;
+		global $_current_image, $_current_album, $points;
 		if (isImagePage()) {
 			?>
 			<!-- Gallery section -->
@@ -112,7 +112,7 @@ class imagegallery {
 											<?php
 											while (next_image(true)) {
 												if ($map) {
-													$coord = getGeoCoord($_zp_current_image);
+													$coord = simpleMap::getCoord($_current_image);
 													if ($coord) {
 														$points[] = $coord;
 													}
@@ -128,7 +128,7 @@ class imagegallery {
 													?>
 													<li>
 														<a href="<?php echo html_encode(getDefaultSizedImage()); ?>">
-															<img src="<?php echo pathurlencode(getImageThumb()); ?>"
+															<img src="<?php echo html_encode(getImageThumb()); ?>"
 																	 class="image<?php echo $lastImage; ?>"
 																	 alt="<?php echo html_encode(getImageDesc()); ?>">
 														</a>
@@ -150,22 +150,15 @@ class imagegallery {
 						<div class="clearage"></div>
 						<?php
 						if (!empty($points) && $map) {
-
-							function map_callback($map) {
-								global $points;
-								foreach ($points as $coord) {
-									addGeoCoord($map, $coord);
-								}
-							}
 							?>
 							<div id="map_link">
-								<?php printGoogleMap(NULL, NULL, NULL, 'album_page', 'map_callback'); ?>
+								<?php simpleMap::printMap($points, array('obj' => 'album_page')); ?>
 							</div>
 							<?php
 						}
 						?>
 					</div><!-- images -->
-					<?php if (function_exists('printAddToFavorites')) printAddToFavorites($_zp_current_album); ?>
+					<?php if (function_exists('printAddToFavorites')) printAddToFavorites($_current_album); ?>
 					<?php @call_user_func('printRating'); ?>
 				</div><!-- main -->
 				<div class="clearage"></div>

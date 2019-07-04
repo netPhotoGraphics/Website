@@ -7,7 +7,7 @@ if (getOption('gallery_index')) {
 	} else {
 		$imagereduction = 1;
 	}
-	load_zenpage_pages('npgHome.htm');
+	Controller::load_zenpage_pages('npgHome.htm');
 	require('pages.php');
 } else {
 	require('gallery.php');

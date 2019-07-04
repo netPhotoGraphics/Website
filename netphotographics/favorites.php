@@ -4,18 +4,18 @@
 if (!defined('WEBPATH'))
 	die();
 if (class_exists('favorites')) {
-	$map = function_exists('printGoogleMap');
+	$map = simplemap::mapPlugin();
 	?>
 	<!DOCTYPE html>
 	<html>
 		<head>
 
-			<?php zp_apply_filter('theme_head'); ?>
+			<?php npgFilters::apply('theme_head'); ?>
 
 		</head>
 
 		<body onload="blurAnchors()">
-			<?php zp_apply_filter('theme_body_open'); ?>
+			<?php npgFilters::apply('theme_body_open'); ?>
 
 			<!-- Wrap Header -->
 			<div id="header">
@@ -47,7 +47,7 @@ if (class_exists('favorites')) {
 						</div><!-- albnext -->
 						<?php
 						if (getOption('Allow_search')) {
-							printSearchForm(NULL, 'search', $_zp_themeroot . '/images/search.png', gettext('Search gallery'));
+							printSearchForm(NULL, 'search', $_themeroot . '/images/search.png', gettext('Search gallery'));
 						}
 						?>
 					</div> <!-- header -->
@@ -119,7 +119,7 @@ if (class_exists('favorites')) {
 									<a href="<?php echo html_encode(getAlbumURL()); ?>" title="<?php echo html_encode($annotate) ?>">
 										<?php printAlbumTitle(); ?>
 									</a>
-									<?php printAddToFavorites($_zp_current_album, '', gettext('Remove')); ?>
+									<?php printAddToFavorites($_current_album, '', gettext('Remove')); ?>
 								</h4>
 							</li>
 							<?php
@@ -161,7 +161,7 @@ if (class_exists('favorites')) {
 										<div class="imagethumb">
 											<?php
 											if ($map) {
-												$coord = getGeoCoord($_zp_current_image);
+												$coord = simpleMap::getCoord($_current_image);
 												if ($coord) {
 													$points[] = $coord;
 												}
@@ -171,7 +171,7 @@ if (class_exists('favorites')) {
 											echo " title=\"" . html_encode($annotate) . "\">\n";
 											printImageThumb($annotate);
 											echo "</a>";
-											printAddToFavorites($_zp_current_image, '', gettext('Remove'));
+											printAddToFavorites($_current_image, '', gettext('Remove'));
 											?>
 										</div>
 									</div>
@@ -216,13 +216,13 @@ if (class_exists('favorites')) {
 
 			<?php
 			printFooter();
-			zp_apply_filter('theme_body_close');
+			npgFilters::apply('theme_body_close');
 			?>
 
 		</body>
 	</html>
 	<?php
 } else {
-	include(SERVERPATH . '/' . ZENFOLDER . '/404.php');
+	include(CORE_SERVERPATH . '404.php');
 }
 ?>
