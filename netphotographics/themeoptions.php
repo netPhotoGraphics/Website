@@ -60,7 +60,7 @@ class ThemeOptions {
 					array('title' => 'Change List', 'link' => 'printNPGgitHubLink(\'commits/master\',\'Change list\');', 'include_li' => '1', 'type' => 'menufunction', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
 					array('title' => 'Repository', 'link' => 'printNPGgitHubLink(\'\',\'Repository\');', 'include_li' => '1', 'type' => 'menufunction', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
 					array('title' => 'Development', 'link' => 'https://github.com/sbillard/netPhotoGraphics-DEV', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => ''),
-					array('title' => '', 'link' => 'contacat-us.htm', 'include_li' => '1', 'type' => 'page', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '')
+					array('title' => '', 'link' => 'contact-us.htm', 'include_li' => '1', 'type' => 'page', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '')
 			);
 			createMenu($menuset, 'netPhotoGraphics');
 		}
