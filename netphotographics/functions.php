@@ -7,12 +7,12 @@ npgFilters::register('theme_head', 'EF_head', 0);
 
 define('ALBUM_THMB_WIDTH', 170);
 define('ALBUM_THUMB_HEIGHT', 80);
-if (extensionEnabled('zenpage')) {
+if (extensionEnabled('npgCMS')) {
 	setOption('gallery_index', 1, false);
 }
 
 $cwd = getcwd();
-chdir(dirname(__FILE__));
+chdir(__DIR__);
 $persona = safe_glob('*', GLOB_ONLYDIR);
 chdir($cwd);
 $personalities = array();
@@ -23,10 +23,10 @@ foreach ($persona as $personality) {
 
 
 
-chdir(SERVERPATH . "/themes/" . basename(dirname(__FILE__)) . "/styles");
+chdir(SERVERPATH . "/themes/" . basename(__DIR__) . "/styles");
 $filelist = safe_glob('*.txt');
-if (file_exists(SERVERPATH . "/themes/" . basename(dirname(__FILE__)) . "/data")) {
-	chdir(SERVERPATH . "/themes/" . basename(dirname(__FILE__)) . "/data");
+if (file_exists(SERVERPATH . "/themes/" . basename(__DIR__) . "/data")) {
+	chdir(SERVERPATH . "/themes/" . basename(__DIR__) . "/data");
 	$userlist = safe_glob('*.txt');
 	$filelist = array_merge($filelist, $userlist);
 }
@@ -489,10 +489,6 @@ function commonNewsLoop($paged) {
 	}
 }
 
-function exerpt($content, $length) {
-	return shortenContent($content, $length, getOption("zenpage_textshorten_indicator"));
-}
-
 function commonComment() {
 	if (function_exists('printCommentForm')) {
 		?>
@@ -518,7 +514,7 @@ function my_checkPageValidity($request, $gallery_page, $page) {
 			$gallery_page = 'index.php'; //	same as an album gallery index
 			break;
 		case 'index.php':
-			if (!getOption('gallery_index')) { // only one index page if zenpage plugin is enabled or gallery index page is set
+			if (!getOption('gallery_index')) { // only one index page if CMS plugin is enabled or gallery index page is set
 				break;
 			}
 		default:

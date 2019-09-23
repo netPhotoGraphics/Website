@@ -14,7 +14,7 @@ if (class_exists('CMS')) {
 				if ($npgHome) {
 					printRSSHeaderLink('Gallery', 'netPhotoGraphics');
 				} else {
-					printRSSHeaderLink("Pages", "Zenpage news", "");
+					printRSSHeaderLink("Pages", "CMS pages", "");
 				}
 			}
 			?>

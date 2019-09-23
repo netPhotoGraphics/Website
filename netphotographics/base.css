@@ -825,7 +825,7 @@ ul.pagelist li.next {
 	border: 1px solid __A_29__; position:absolute; text-align:left; list-style: none;
 	height: 8em; width: 20em; overflow: auto;
 	color: __C_65__;
-	background-image:url(../images/50percent.png);
+	background-color: rgba(0, 0, 0, 0.5);
 }
 #searchfields_icon {
 	position: relative;
@@ -1092,21 +1092,6 @@ ul li {
 
 .newstype {
 	font-size: 0.8em;
-}
-
-/* logo link
------------------------------- */
-
-#zen-part {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1.8em;
-	font-weight: 100;
-}
-
-#photo-part {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 0.9em;
-	font-weight: bold;
 }
 
 .inputbox {
