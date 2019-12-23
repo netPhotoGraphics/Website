@@ -6,7 +6,7 @@ if (class_exists('CMS')) {
 	$npgHome = strtolower(stripSuffix($_CMS_current_page->getTitleLink())) == 'npghome';
 	?>
 	<!DOCTYPE html>
-	<html>
+	<html<?php i18n::htmlLanguageCode(); ?>>
 		<head>
 			<?php
 			npgFilters::apply('theme_head');
