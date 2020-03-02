@@ -1,0 +1,8 @@
+services:
+    hifikabin.obscurecontactus.listener:
+        class: hifikabin\obscurecontactus\event\listener
+        arguments:
+            - '@config'
+            - '@template'
+        tags:
+            - { name: event.listener }

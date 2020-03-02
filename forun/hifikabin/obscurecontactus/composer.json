@@ -1,0 +1,33 @@
+{
+    "name": "hifikabin/obscurecontactus",
+    "type": "phpbb-extension",
+    "description": "Replaces the 'Contact Us' link at the foot of the forum with a JavaScript encoded mailto. NOTE This extension is for phpBB3.2.x and later",
+    "homepage": "https://phpbb.hifikabin.me.uk",
+    "version": "3.2.2",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "James Newcombe",
+            "username": "HiFiKabin",
+            "email": "webmaster@hifikabin.me.uk",
+            "homepage": "http://phpbb.hifikabin.me.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "phpbb/phpbb": ">=3.2.0@dev",
+        "composer/installers": "~1.0.0"
+    },
+    "extra": {
+        "display-name": "Obscure Contact Us",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.2.0@dev"
+        },
+        "version-check": {
+            "host": "www.phpbb.com",
+            "directory": "/customise/db/extension/obscure_contact_us",
+            "filename": "version_check"
+        }
+    }
+}
