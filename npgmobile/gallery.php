@@ -7,20 +7,7 @@ if (!defined('WEBPATH'))
 <html<?php i18n::htmlLanguageCode(); ?>>
 	<head>
 		<?php npgFilters::apply('theme_head'); ?>
-
-
-
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109862535-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-109862535-3');
-</script>
-
 
 		<?php
 		scriptLoader($_themeroot . '/style.css');
@@ -48,29 +35,29 @@ if (!defined('WEBPATH'))
 								printAnnotatedAlbumTitle();
 								?>">
 									<div class="gallery-thumb">
-	<?php printCustomAlbumThumbImage(getAnnotatedAlbumTitle(), null, 79, 79, 79, 79, NULL, null, NULL, NULL); ?>
+										<?php printCustomAlbumThumbImage(getAnnotatedAlbumTitle(), null, 79, 79, 79, 79, NULL, null, NULL, NULL); ?>
 									</div>
 									<h3><?php printAlbumTitle(); ?><small> (<?php printAlbumDate(''); ?>)</small></h3>
 									<div class="albumdesc"><?php echo html_encodeTagged(shortenContent(getAlbumDesc(), 100, '(...)', false)); ?></div>
 									<small class="ui-li-aside ui-li-count"><?php jqm_printImageAlbumCount() ?></small>
 								</a>
 							</li>
-					<?php endwhile; ?>
+						<?php endwhile; ?>
 					</ul>
-<?php if (hasPrevPage() || hasNextPage()) printPageListWithNav(gettext("prev"), gettext("next"), false, true, 'pagelist', NULL, true, 7); ?>
+					<?php if (hasPrevPage() || hasNextPage()) printPageListWithNav(gettext("prev"), gettext("next"), false, true, 'pagelist', NULL, true, 7); ?>
 
 				</div>
 				<div class="content-secondary">
-<?php jqm_printMenusLinks(); ?>
+					<?php jqm_printMenusLinks(); ?>
 				</div>
 
 			</div><!-- /content -->
 
 			<?php jqm_printBacktoTopLink(); ?>
-<?php jqm_printFooterNav(); ?>
+			<?php jqm_printFooterNav(); ?>
 		</div><!-- /page -->
 
-<?php npgFilters::apply('theme_body_close'); ?>
+		<?php npgFilters::apply('theme_body_close'); ?>
 
 	</body>
 </html>

@@ -51,7 +51,7 @@ if (class_exists('CMS')) {
 									<?php
 								}
 								?></a></span>
-							<?php printZenpageItemsBreadcrumb(" | ", ""); ?><?php printPageTitle(" | "); ?>
+								<?php printZenpageItemsBreadcrumb(" | ", ""); ?><?php printPageTitle(" | "); ?>
 						</div>
 					</div> <!-- wrapnav -->
 					<?php

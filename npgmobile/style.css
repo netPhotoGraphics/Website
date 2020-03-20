@@ -248,12 +248,15 @@ h4 {
 
 }
 
-
+ul > li {
+	list-style: none;
+}
 
 ul.archive {
 	margin-left: -10px;
 
 }
+
 ul.archive > li {
 	list-style: none;
 	margin: 20px 0 20px -30px;

@@ -158,36 +158,12 @@ function jqm_printNewsCategories($separator = '', $class = '') {
 function jqm_printMenusLinks() {
 	global $_gallery_page;
 	?>
-	<div id="collapsible-lists" data-collapsed="false">
+	<div id="collapsible-lists" data-collapsed="false" class="menu">
 		<?php
-		if (extensionEnabled('npgCMS') && hasNews()) {
-			?>
-			<div data-role="collapsible" data-content-theme="c" data-theme="b"<?php if ($_gallery_page == 'news.php') echo ' data-collapsed="false"'; ?>>
-				<h3><?php echo NEWS_LABEL; ?></h3>
-				<?php printAllNewsCategories(gettext("All"), TRUE, "", "menu-active", true, "submenu", "menu-active"); ?>
-			</div>
-			<?php
-		}
-		if (function_exists('printAlbumMenu')) {
-			?>
-			<div data-role="collapsible" data-content-theme="c" data-theme="b"<?php if ($_gallery_page == 'gallery.php' || $_gallery_page == 'album.php' || $_gallery_page == 'image.php') echo ' data-collapsed="false"'; ?>>
-				<h3><?php echo gettext('Screenshots'); ?></h3>
-				<?php printAlbumMenu('list-top', true, '', '', '', '', '', false, false, false); ?>
-			</div>
-			<?php
-		}
-		if (extensionEnabled('npgCMS') && hasPages()) {
-			?>
-			<div data-role="collapsible" data-content-theme="c" data-theme="b"<?php if ($_gallery_page == 'pages.php') echo ' data-collapsed="false"'; ?>>
-				<h3><?php echo gettext('Pages'); ?></h3>
-				<?php printPageMenu("list", "", "menu-active", "submenu", "menu-active", NULL, true, true, NULL); ?>
-			</div>
-			<?php
-		}
+		printCustomMenu('netPhotoGraphics', 'list', '', "menu-active", "submenu", "menu-active", 2);
 		?>
-		<div data-role="collapsible" data-content-theme="c" data-theme="b">
-			<?php jqm_printRSSlinks(); ?>
-		</div>
+
+
 	</div>
 	<?php
 }

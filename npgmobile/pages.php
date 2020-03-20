@@ -3,19 +3,23 @@
 if (!defined('WEBPATH'))
 	die();
 if (class_exists('CMS')) {
+	$npgHome = strtolower(stripSuffix($_CMS_current_page->getTitleLink())) == 'npghome';
 	?>
 	<!DOCTYPE html>
 	<html<?php i18n::htmlLanguageCode(); ?>>
 		<head>
 			<?php npgFilters::apply('theme_head'); ?>
-
-
-
 			<meta name="viewport" content="width=device-width, initial-scale=1">
-
 			<?php
 			scriptLoader($_themeroot . '/style.css');
 			jqm_loadScripts();
+			if (class_exists('RSS')) {
+				if ($npgHome) {
+					printRSSHeaderLink('Gallery', 'netPhotoGraphics');
+				} else {
+					printRSSHeaderLink("Pages", "CMS pages", "");
+				}
+			}
 			?>
 		</head>
 
@@ -31,14 +35,18 @@ if (class_exists('CMS')) {
 					<?php echo gettext('A multi-media oriented Content Management System'); ?>
 					<br /><br />
 					<div class="content-primary">
-						<h2 class="breadcrumb"><a href="<?php echo getPagesLink(); ?>"><?php echo gettext('Pages'); ?></a> <?php
-							printZenpageItemsBreadcrumb('', '  ');
-							printPageTitle('');
-							?></strong></h2>
-
 						<?php
+						if (!$npgHome) {
+							?>
+							<h2 class="breadcrumb"><a href="<?php echo getPagesLink(); ?>"><?php echo gettext('Pages'); ?></a> <?php
+					printZenpageItemsBreadcrumb('', '  ');
+					printPageTitle('');
+							?></strong></h2>
+								<?php
+						}
+
 						printPageContent();
-						printCodeblock(1);
+						printCodeblock(2);
 						$subpages = $_CMS_current_page->getPages();
 						if ($subpages) {
 							?>
