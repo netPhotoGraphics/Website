@@ -302,6 +302,13 @@ function my_checkPageValidity($request, $gallery_page, $page) {
 	return checkPageValidity($request, $gallery_page, $page);
 }
 
+function printNPGgitHubLink($link, $title) {
+	$title = get_language_string($title);
+	?>
+	<a href="https://<?php echo GITHUB . '/' . $link; ?>" title="<?php echo gettext($title); ?>"><?php echo gettext($title); ?></a>
+	<?php
+}
+
 $_current_page_check = 'my_checkPageValidity';
 if (!getOption('jQuery_Migrate_theme')) { //	until such time as jquery.mobile works with jQuery 3.3
 	setOption('jQuery_Migrate_theme', 1, false);
