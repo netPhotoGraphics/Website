@@ -22,6 +22,7 @@ function putAnalytics() {
 
 		gtag('config', 'UA-109862535-3');
 	</script>
+	<script data-ad-client="ca-pub-2601133047871189" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<?php
 }
 
