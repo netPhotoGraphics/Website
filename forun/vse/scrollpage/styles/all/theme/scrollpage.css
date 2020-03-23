@@ -1,0 +1,49 @@
+.scroll-page {
+	font-size: 20px;
+	background-color: #000000; /* Scroll bg color */
+	border-radius: 3px;
+	color: #ffffff;
+	opacity: 0.5;
+	position: fixed;
+	z-index: 9999;
+	right: 25px;
+	bottom: 25px;
+	display: none;
+	cursor: pointer;
+}
+
+.scroll-page i {
+	background: url("./images/sprite.png"); /* PNG fallback */
+	background-image: url("./images/sprite.svg"); /* SVG image */
+	background-repeat: no-repeat;
+	color: inherit;
+	display: block;
+	width: 20px;
+	height: 20px;
+	padding: 10px;
+}
+
+.scroll-page .scroll-up {
+	background-position: -26px 10px;
+	padding-bottom: 5px;
+}
+
+.scroll-page .scroll-down {
+	background-position: 10px 5px;
+	padding-top: 5px;
+}
+
+.notouch .scroll-page:hover {
+	opacity: 0.8;
+}
+
+.rtl .scroll-page {
+	right: auto;
+	left: 25px;
+}
+
+@media only screen and (max-width: 800px), only screen and (max-device-width: 800px) {
+	.scroll-page {
+		display: none !important;
+	}
+}
