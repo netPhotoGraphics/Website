@@ -21,7 +21,7 @@ function putAnalytics() {
 		gtag('js', new Date());
 		gtag('config', 'UA-109862535-3');
 	</script>
-        <meta name="msvalidate.01" content="9DA4AD6AB0D69A6651922EA18FF9BBAD" />
+	<meta name="msvalidate.01" content="9DA4AD6AB0D69A6651922EA18FF9BBAD" />
 	<meta name="yandex-verification" content="5e9e5bddb8a965ad" />
 	<?php
 }
