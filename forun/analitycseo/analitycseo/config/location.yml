@@ -1,0 +1,115 @@
+services:
+    phpbb.ads.location.manager:
+        class: phpbb\ads\location\manager
+        arguments:
+            - '@phpbb.ads.location.type_collection'
+
+    phpbb.ads.location.type.base:
+        class: phpbb\ads\location\type\base
+        abstract: true
+        arguments:
+            - '@user'
+            - '@language'
+
+# ----- Template locations -----
+    phpbb.ads.location.type_collection:
+        class: phpbb\di\service_collection
+        arguments:
+            - '@service_container'
+        tags:
+            - { name: service_collection, tag: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.above_footer:
+        class: phpbb\ads\location\type\above_footer
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.above_header:
+        class: phpbb\ads\location\type\above_header
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.after_first_post:
+        class: phpbb\ads\location\type\after_first_post
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.after_footer_navbar:
+        class: phpbb\ads\location\type\after_footer_navbar
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.after_header_navbar:
+        class: phpbb\ads\location\type\after_header_navbar
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.after_not_first_post:
+        class: phpbb\ads\location\type\after_not_first_post
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.after_posts:
+        class: phpbb\ads\location\type\after_posts
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.after_profile:
+        class: phpbb\ads\location\type\after_profile
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.before_posts:
+        class: phpbb\ads\location\type\before_posts
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.before_profile:
+        class: phpbb\ads\location\type\before_profile
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.below_footer:
+        class: phpbb\ads\location\type\below_footer
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.below_header:
+        class: phpbb\ads\location\type\below_header
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.pop_up:
+        class: phpbb\ads\location\type\pop_up
+        arguments:
+            - '@user'
+            - '@language'
+            - '@request'
+            - '@config'
+            - '@template'
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.scripts:
+        class: phpbb\ads\location\type\scripts
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }
+
+    phpbb.ads.location.type.slide_up:
+        class: phpbb\ads\location\type\slide_up
+        parent: phpbb.ads.location.type.base
+        tags:
+            - { name: phpbb.ads.location.type }

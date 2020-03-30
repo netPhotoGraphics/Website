@@ -1,0 +1,104 @@
+imports:
+    - { resource: tables.yml }
+    - { resource: analyser.yml }
+    - { resource: location.yml }
+
+services:
+    phpbb.ads.ad.manager:
+        class: phpbb\ads\ad\manager
+        arguments:
+            - '@dbal.conn'
+            - '@config'
+            - '%phpbb.ads.tables.ads%'
+            - '%phpbb.ads.tables.ad_locations%'
+            - '%phpbb.ads.tables.ad_group%'
+
+    phpbb.ads.banner.banner:
+        class: phpbb\ads\banner\banner
+        arguments:
+            - '@files.upload'
+            - '@filesystem'
+            - '%core.root_path%'
+            - '%phpbb.ads.tables.ad_locations%'
+
+    phpbb.ads.helper:
+        class: phpbb\ads\controller\helper
+        arguments:
+            - '@user'
+            - '@user_loader'
+            - '@language'
+            - '@template'
+            - '@log'
+            - '@phpbb.ads.ad.manager'
+            - '@phpbb.ads.location.manager'
+            - '@group_helper'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+
+    phpbb.ads.admin.input:
+        class: phpbb\ads\controller\admin_input
+        arguments:
+            - '@user'
+            - '@user_loader'
+            - '@language'
+            - '@request'
+            - '@phpbb.ads.banner.banner'
+
+    phpbb.ads.listener:
+        class: phpbb\ads\event\main_listener
+        arguments:
+            - '@template'
+            - '@template_context'
+            - '@user'
+            - '@config'
+            - '@phpbb.ads.ad.manager'
+            - '@phpbb.ads.location.manager'
+            - '@controller.helper'
+            - '@request'
+            - '@cache.driver'
+            - '%core.php_ext%'
+        tags:
+            - { name: event.listener }
+
+# -------- Controllers -------- #
+    phpbb.ads.admin.controller:
+        class: phpbb\ads\controller\admin_controller
+        arguments:
+            - '@template'
+            - '@language'
+            - '@request'
+            - '@phpbb.ads.ad.manager'
+            - '@config_text'
+            - '@config'
+            - '@phpbb.ads.admin.input'
+            - '@phpbb.ads.helper'
+            - '@phpbb.ads.analyser.manager'
+            - '@controller.helper'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+
+    phpbb.ads.increment.controller:
+        class: phpbb\ads\controller\increment_controller
+        arguments:
+            - '@phpbb.ads.ad.manager'
+            - '@request'
+
+    phpbb.ads.ucp.controller:
+        class: phpbb\ads\controller\ucp_controller
+        arguments:
+            - '@phpbb.ads.ad.manager'
+            - '@phpbb.ads.helper'
+            - '@user'
+            - '@language'
+            - '@template'
+            - '@config'
+
+    phpbb.ads.visual_demo.controller:
+        class: phpbb\ads\controller\visual_demo_controller
+        arguments:
+            - '@auth'
+            - '@config'
+            - '@request'
+            - '@user'
+            - '%core.root_path%'
+            - '%core.php_ext%'
