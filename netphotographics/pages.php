@@ -15,9 +15,7 @@ if (class_exists('CMS')) {
 				$i = strpos($f, '<style');
 				$j = strpos($f, '</style>');
 				$s = substr($f, $i, $j - $i + 8) . "\n";
-				echo "<!-- style should start here-->\n";
 				echo $s;
-				echo "<!-- style should end here-->\n";
 			}
 			if (class_exists('RSS')) {
 				if ($npgHome) {
@@ -60,7 +58,7 @@ if (class_exists('CMS')) {
 									<?php
 								}
 								?></a></span>
-								<?php printZenpageItemsBreadcrumb(" | ", ""); ?><?php printPageTitle(" | "); ?>
+							<?php printZenpageItemsBreadcrumb(" | ", ""); ?><?php printPageTitle(" | "); ?>
 						</div>
 					</div> <!-- wrapnav -->
 					<?php
