@@ -6,13 +6,8 @@ require_once(CORE_SERVERPATH . PLUGIN_FOLDER . '/print_album_menu.php');
 /**
  * Prints the scripts needed for the header
  */
-function jqm_loadScripts($js = true) {
-	global $_themeroot;
-
-	scriptLoader($_themeroot . '/jquerymobile/jquery.mobile-1.4.5.min.css');
-	if ($js) {
-		scriptLoader($_themeroot . '/jquerymobile/jquery.mobile-1.4.5.min.js');
-	}
+function jqm_loadScripts() {
+	loadJqueryMobile();
 	?>
 	<script type = "text/javascript" >
 		window.addEventListener('load', function () {
