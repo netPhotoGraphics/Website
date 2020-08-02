@@ -216,10 +216,10 @@ if (class_exists('favorites')) {
 
 			<?php
 			printFooter();
-			npgFilters::apply('theme_body_close');
 			?>
 
 		</body>
+		<?php npgFilters::apply('theme_body_close'); ?>
 	</html>
 	<?php
 } else {

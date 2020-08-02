@@ -12,13 +12,6 @@ if (class_exists('CMS')) {
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<?php
 			scriptLoader($_themeroot . '/style.css');
-			if ($_CMS_current_page->getTitleLink() == 'release-notes' . RW_SUFFIX) {
-				$f = file_get_contents(SERVERPATH . '/docs/release notes.htm');
-				$i = strpos($f, '<style');
-				$j = strpos($f, '</style>');
-				$s = substr($f, $i, $j - $i + 8) . "\n";
-				echo $s;
-			}
 			jqm_loadScripts();
 			if (class_exists('RSS')) {
 				if ($npgHome) {
@@ -84,10 +77,8 @@ if (class_exists('CMS')) {
 				<?php jqm_printBacktoTopLink(); ?>
 				<?php jqm_printFooterNav(); ?>
 			</div><!-- /page -->
-
-			<?php npgFilters::apply('theme_body_close');
-			?>
-		</body>
+	</body>
+	<?php npgFilters::apply('theme_body_close'); ?>
 	</html>
 	<?php
 } else {

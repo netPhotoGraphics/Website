@@ -10,13 +10,6 @@ if (class_exists('CMS')) {
 		<head>
 			<?php
 			npgFilters::apply('theme_head');
-			if ($_CMS_current_page->getTitleLink() == 'release-notes' . RW_SUFFIX) {
-				$f = file_get_contents(SERVERPATH . '/docs/release notes.htm');
-				$i = strpos($f, '<style');
-				$j = strpos($f, '</style>');
-				$s = substr($f, $i, $j - $i + 8) . "\n";
-				echo $s;
-			}
 			if (class_exists('RSS')) {
 				if ($npgHome) {
 					printRSSHeaderLink('Gallery', 'netPhotoGraphics');
@@ -98,10 +91,10 @@ if (class_exists('CMS')) {
 
 			<?php
 			printFooter();
-			npgFilters::apply('theme_body_close');
 			?>
 
 		</body>
+		<?php npgFilters::apply('theme_body_close'); ?>
 	</html>
 	<?php
 } else {
