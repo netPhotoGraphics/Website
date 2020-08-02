@@ -7,7 +7,7 @@
 if (npgFilters::has_filter('theme_head', 'colorbox::css')) {
 	$handler = new ef_colorbox();
 } else {
-	require_once(SERVERPATH . '/' . THEMEFOLDER . '/effervescence+/image_page/functions.php');
+	require_once(SERVERPATH . '/' . THEMEFOLDER . '/netphotographics/image_page/functions.php');
 }
 
 class ef_colorbox {
