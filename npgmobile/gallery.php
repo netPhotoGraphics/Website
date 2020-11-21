@@ -35,7 +35,7 @@ if (!defined('WEBPATH'))
 								printAnnotatedAlbumTitle();
 								?>">
 									<div class="gallery-thumb">
-										<?php printCustomAlbumThumbImage(getAnnotatedAlbumTitle(), null, 79, 79, 79, 79, NULL, null, NULL, NULL); ?>
+										<?php printCustomAlbumThumbImage(getAnnotatedAlbumTitle(), array('width' => 79, 'height' => 79, 'cw' => 79, 'ch' => 79)); ?>
 									</div>
 									<h3><?php printAlbumTitle(); ?><small> (<?php printAlbumDate(''); ?>)</small></h3>
 									<div class="albumdesc"><?php echo html_encodeTagged(shortenContent(getAlbumDesc(), 100, '(...)', false)); ?></div>

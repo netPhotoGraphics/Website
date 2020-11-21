@@ -220,14 +220,9 @@ class ThemeOptions {
 				echo "</select>\n";
 				break;
 			case 'netPhotoGraphics_menu':
-				$menusets = array($currentValue => $currentValue);
+				$$menusets = getMenuSets();
 				echo '<select id="EF_menuset" name="netPhotoGraphics_menu"';
-				if (function_exists('printCustomMenu')) {
-					$result = query_full_array("SELECT DISTINCT menuset FROM " . prefix('menu') . " ORDER BY menuset");
-					foreach ($result as $set) {
-						$menusets[$set['menuset']] = $set['menuset'];
-					}
-				} else {
+				if (empty($menusets)) {
 					echo ' disabled="disabled"';
 				}
 				echo ">\n";

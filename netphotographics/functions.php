@@ -217,12 +217,15 @@ function printHeadingImage($randomImage) {
 			$high = min(180, $randomImage->getHeight());
 		}
 		echo "<a href='" . $randomImageURL . "' title='" . gettext('Random picture...') . "'>";
-		$html = "<img src='" . html_encode($randomImage->getCustomImage(NULL, $wide, $high, $wide, $high, 0, 110, !getOption('Watermark_head_image'))) .
+		$html = "<img src='" . html_encode($randomImage->getCustomImage(array('width' => $wide, 'height' => $high, 'cw' => $wide, 'ch' => $high, 'cx' => 0, 'cy' => 110, 'thumb' => !getOption('Watermark_head_image')))) .
 						"' width='$wide' height='$high' alt=" . '"' .
 						html_encode($randomAlt1) .
 						":\n" . html_encode($randomImage->getTitle()) .
 						'" />';
-		$html = npgFilters::apply('custom_image_html', $html, false);
+		$html = npgFilters::apply('custom_image_html', $html, FALSE);
+		if (ENCODING_FALLBACK) {
+			$html = "<picture>\n<source srcset=\"" . html_encode($randomImage->getCustomImage(array('width' => $wide, 'height' => $high, 'cw' => $wide, 'ch' => $high, 'cx' => 0, 'cy' => 110, 'thumb' => !getOption('Watermark_head_image')), FALLBACK_SUFFIX)) . "\">\n" . $html . "</picture>\n";
+		}
 		echo $html;
 		echo '</a>';
 	}
@@ -328,7 +331,7 @@ function printLogo() {
 		if (file_exists(SERVERPATH . $fullimg)) {
 			echo '<img src="' . pathurlencode(WEBPATH . $fullimg) . '" alt="Logo"/>';
 		} else {
-			echo '<img src="' . $_themeroot . '/images/effervescence.png" alt="Logo"/>';
+			echo '<img src="' . $_themeroot . '/images/admin-logo.png" alt="Logo"/>';
 		}
 	} else {
 		if (empty($name)) {
