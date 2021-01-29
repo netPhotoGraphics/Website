@@ -220,7 +220,7 @@ class ThemeOptions {
 				echo "</select>\n";
 				break;
 			case 'netPhotoGraphics_menu':
-				$$menusets = getMenuSets();
+				$menusets = getMenuSets();
 				echo '<select id="EF_menuset" name="netPhotoGraphics_menu"';
 				if (empty($menusets)) {
 					echo ' disabled="disabled"';
