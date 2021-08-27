@@ -25,10 +25,9 @@ class ThemeOptions {
 		setThemeOptionDefault('netPhotoGraphics_caption_location', 'image');
 		setThemeOptionDefault('Theme_colors', 'netPhotoGraphics');
 		setThemeOptionDefault('netPhotoGraphics_menu', 'netPhotoGraphics');
-		setThemeOptionDefault('albums_per_page', 9);
-		setThemeOptionDefault('albums_per_row', 3);
 		setThemeOptionDefault('images_per_page', 20);
 		setThemeOptionDefault('images_per_row', 5);
+		setThemeOptionDefault('albums_per_page', 9);
 		setThemeOption('image_size', 595, NULL);
 		setThemeOption('image_use_side', 'longest', NULL);
 		setThemeOptionDefault('thumb_transition', 1);
