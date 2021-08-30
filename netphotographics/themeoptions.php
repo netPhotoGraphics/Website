@@ -30,7 +30,7 @@ class ThemeOptions {
 		setThemeOptionDefault('albums_per_page', 9);
 		setThemeOption('image_size', 595, NULL);
 		setThemeOption('image_use_side', 'longest', NULL);
-		setThemeOptionDefault('thumb_transition', 1);
+		setThemeOptionDefault('thumb_transition', true);
 		setThemeOptionDefault('thumb_size', 90);
 		setThemeOptionDefault('thumb_crop_width', 90);
 		setThemeOptionDefault('thumb_crop_height', 90);

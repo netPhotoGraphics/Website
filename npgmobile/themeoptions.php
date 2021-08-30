@@ -14,7 +14,7 @@ class ThemeOptions {
 	function __construct() {
 		$me = basename(__DIR__);
 		setThemeOptionDefault('Allow_search', true);
-		setThemeOptionDefault('thumb_transition', 1);
+		setThemeOptionDefault('thumb_transition', true);
 		setThemeOption('thumb_size', 79, NULL);
 		setThemeOptionDefault('thumb_crop_width', 79);
 		setThemeOptionDefault('thumb_crop_height', 79);
