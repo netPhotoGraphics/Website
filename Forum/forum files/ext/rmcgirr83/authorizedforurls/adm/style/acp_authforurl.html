@@ -1,0 +1,47 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_AFU_ACP_TITLE}</h1>
+<fieldset>
+	<legend>{{ lang('BUY_ME_A_BEER') }}</legend>
+	<dl>
+		<dt><label>{{ lang('BUY_ME_A_BEER_SHORT') }}{{ lang('COLON') }}</label><br /><span>{{ lang('BUY_ME_A_BEER_EXPLAIN') }}</span></dt>
+		<dd><a href="{{ lang('BUY_ME_A_BEER_URL') }}" target="_blank" rel="noreferrer noopener"><img src="{{ lang('PAYPAL_IMAGE_URL') }}" border="0" alt="{{ lang('PAYPAL_ALT') }}" style="cursor:pointer;margin-top:15px;"></a></dd>
+	</dl>
+</fieldset>
+
+<!-- IF ERRORS -->
+	<div class="errorbox"><h3>{L_WARNING}</h3>
+		<p>{ERRORS}</p>
+	</div>
+<!-- ENDIF -->
+
+<form id="acp_afu" method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_AFU_CONFIG}</legend>
+		<dl>
+			<dt><label>{L_AFU_IMAGE_BBCODE}</label><br>{L_AFU_IMAGE_BBCODE_EXPLAIN}</dt>
+			<dd><input type="radio" class="radio" name="authforurl_img_bbcode" value="1" <!-- IF AFU_BBCODE -->checked="checked"<!-- ENDIF -->/> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="authforurl_img_bbcode" value="0" <!-- IF not AFU_BBCODE -->checked="checked"<!-- ENDIF --> /> {L_NO}</dd>
+		</dl>
+		<dl>
+			<dt><label>{L_AFU_EMAIL}</label><br>{L_AFU_EMAIL_EXPLAIN}</dt>
+			<dd><input type="radio" class="radio" name="authforurl_email" value="1" <!-- IF AFU_EMAIL -->checked="checked"<!-- ENDIF -->/> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="authforurl_email" value="0" <!-- IF not AFU_EMAIL -->checked="checked"<!-- ENDIF --> /> {L_NO}</dd>
+		</dl>
+		<dl>
+			<dt><label>{L_AFU_DENY_POST}</label><br>{L_AFU_DENY_POST_EXPLAIN}</dt>
+			<dd><input type="radio" class="radio" name="authforurl_deny_post" value="1" <!-- IF AFU_DENY_POST -->checked="checked"<!-- ENDIF -->/> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="authforurl_deny_post" value="0" <!-- IF not AFU_DENY_POST -->checked="checked"<!-- ENDIF --> /> {L_NO}</dd>
+		</dl>
+		<dl>
+			<dt><label>{L_AFU_TLDS}{L_COLON}</label><br><span>{L_AFU_TLDS_EXPLAIN}</span></dt>
+			<dd><textarea name="authforurl_tlds" rows="10" cols="60" style="width: 95%;">{AFU_TLDS}</textarea></dd>
+		</dl>
+		<p class="submit-buttons">
+			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+		{S_FORM_TOKEN}
+		</p>
+	</fieldset>
+</form>
+<!-- INCLUDE overall_footer.html -->

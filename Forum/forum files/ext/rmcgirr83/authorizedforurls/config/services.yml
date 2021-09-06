@@ -1,0 +1,12 @@
+services:
+    rmcgirr83.authorizedforurls.listener:
+        class: rmcgirr83\authorizedforurls\event\listener
+        arguments:
+            - '@auth'
+            - '@config'
+            - '@config_text'
+            - '@language'
+            - '@template'
+            - '@?rmcgirr83.topicdescription.listener'
+        tags:
+            - { name: event.listener }

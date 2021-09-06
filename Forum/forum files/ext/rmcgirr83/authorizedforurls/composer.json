@@ -1,0 +1,40 @@
+{
+    "name": "rmcgirr83/authorizedforurls",
+    "type": "phpbb-extension",
+    "description": "A new group/user permission that allows you to specify specific groups/users to disallow the posting of url links.",
+    "version": "1.0.13",
+    "time": "2021-01-17",
+    "keywords": [
+        "phpbb",
+        "extension",
+        "anti-spam"
+    ],
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Rich McGirr",
+            "homepage": "https://www.phpbb.com/customise/db/author/rmcgirr83/contributions",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.0",
+        "phpbb/phpbb": ">=3.3.0",
+        "composer/installers": "~1.0.0"
+    },
+    "require-dev": {
+        "phpbb/epv": "dev-master"
+    },
+    "extra": {
+        "display-name": "Authorized for URLs",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.3.0"
+        },
+        "version-check": {
+            "host": "www.phpbb.com",
+            "directory": "/customise/db/extension/authorized_for_urls_2",
+            "filename": "version_check",
+            "ssl": true
+        }
+    }
+}

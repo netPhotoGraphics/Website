@@ -1,0 +1,54 @@
+services:
+    senky.akismet.listener:
+        class: senky\akismet\event\main_listener
+        arguments:
+            - '@user'
+            - '@request'
+            - '@config'
+            - '@log'
+            - '@auth'
+            - '@language'
+            - '@senky.akismet.client'
+            - '%core.php_ext%'
+            - '%core.root_path%'
+        tags:
+            - { name: event.listener }
+
+    senky.akismet.admin.controller:
+        class: senky\akismet\controller\admin_controller
+        arguments:
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@log'
+            - '@config'
+            - '@language'
+            - '@group_helper'
+            - '@dbal.conn'
+            - '@senky.akismet.client'
+            - '%core.php_ext%'
+            - '%core.root_path%'
+            - '%tables.groups%'
+
+    senky.akismet.client.factory:
+        class: senky\akismet\utility\akismet_factory
+        arguments:
+            - '@config'
+
+    senky.akismet.client:
+        class: Gothick\AkismetClient\Client
+        factory: ['@senky.akismet.client.factory', 'create_akismet']
+
+    senky.akismet.notification.type.post_in_queue:
+        class: senky\akismet\notification\type\post_in_queue
+        shared: false
+        parent: notification.type.post_in_queue
+        tags:
+            - { name: notification.type }
+
+    senky.akismet.notification.type.topic_in_queue:
+        class: senky\akismet\notification\type\topic_in_queue
+        shared: false
+        parent: notification.type.topic_in_queue
+        tags:
+            - { name: notification.type }

@@ -1,0 +1,9 @@
+Subject: phpBB je správně nastaveno pro odesílání emailů
+
+Dobrý den {USERNAME},
+
+Gratulujeme. Pokud vám přišel tento email, je vaše phpBB správně nastaveno pro odesílání emailů.
+
+Pokud potřebujete pomoc, navštivte, prosím, fórum podpory pro phpBB - https://www.phpbb.cz/
+
+{EMAIL_SIG}

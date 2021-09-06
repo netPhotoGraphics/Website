@@ -1,0 +1,62 @@
+{
+    "name": "phpbb/googleanalytics",
+    "type": "phpbb-extension",
+    "description": "A phpBB official extension that allows administrators to easily add Google Analytics to their forums.",
+    "homepage": "https://www.phpbb.com",
+    "version": "1.0.6",
+    "keywords": [
+        "phpbb",
+        "extension",
+        "google",
+        "analytics"
+    ],
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Marc Alexander",
+            "email": "admin@m-a-styles.de",
+            "homepage": "http://www.m-a-styles.de",
+            "role": "Extensions Team Consultant"
+        },
+        {
+            "name": "Michael Cullum",
+            "homepage": "http://michaelcullum.com",
+            "email": "michael@phpbb.com",
+            "role": "Extensions Team Consultant"
+        },
+        {
+            "name": "Matt Friedman",
+            "homepage": "https://imattpro.github.io",
+            "role": "Extensions Development Team Lead"
+        },
+        {
+            "name": "Nathan Guse",
+            "email": "nathaniel.guse@gmail.com",
+            "role": "Former Extensions Development Team Lead"
+        },
+        {
+            "name": "Lukasz Kaczynski",
+            "role": "Extensions Development Team"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "composer/installers": "~1.0.0",
+        "phpbb/phpbb": ">=3.1.0"
+    },
+    "require-dev": {
+        "phing/phing": "2.4.*"
+    },
+    "extra": {
+        "display-name": "Google Analytics",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.1.0"
+        },
+        "version-check": {
+            "host": "www.phpbb.com",
+            "directory": "/customise/db/extension/googleanalytics",
+            "filename": "version_check",
+            "ssl": true
+        }
+    }
+}
