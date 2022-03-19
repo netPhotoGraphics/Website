@@ -1,0 +1,14 @@
+$menuset = array(
+  array('title' => 'links', 'link' => '379e75c850e1334ef7bece52694c2f26cebec78f', 'titletext' => '', 'include_li' => '1', 'type' => 'menulabel', 'nesting' => '0', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => ''),
+  array('title' => 'Forum', 'link' => 'https://forum.netphotographics.org', 'titletext' => '', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => ''),
+  array('title' => 'Demo', 'link' => 'https://netphotographics.org/demo/', 'titletext' => '', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => ''),
+  array('title' => 'Admin demo', 'link' => 'https://netphotographics.org/openAdmin/admin', 'titletext' => '', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => ''),
+  array('title' => 'User guide', 'link' => 'https://netphotographics.org/docs/user guide.pdf', 'titletext' => '', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => 'download'),
+  array('title' => '', 'link' => 'troubleshooting-guide.htm', 'titletext' => '', 'include_li' => '1', 'type' => 'page', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => ''),
+  array('title' => 'Releases', 'link' => 'printNPGgitHubLink(\'releases\',\'Releases\');', 'titletext' => '', 'include_li' => '1', 'type' => 'menufunction', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => ''),
+  array('title' => '', 'link' => 'release-notes.htm', 'titletext' => '', 'include_li' => '1', 'type' => 'page', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => ''),
+  array('title' => 'Change List', 'link' => 'printNPGgitHubLink(\'commits/master\',\'Change list\');', 'titletext' => '', 'include_li' => '1', 'type' => 'menufunction', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => ''),
+  array('title' => 'Repository', 'link' => 'printNPGgitHubLink(\'\',\'Repository\');', 'titletext' => '', 'include_li' => '1', 'type' => 'menufunction', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => ''),
+  array('title' => 'Development', 'link' => 'https://github.com/sbillard/netPhotoGraphics-DEV', 'titletext' => '', 'include_li' => '1', 'type' => 'customlink', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => ''),
+  array('title' => '', 'link' => 'contact-us.htm', 'titletext' => '', 'include_li' => '1', 'type' => 'page', 'nesting' => '1', 'show' => '1', 'span_class' => '', 'span_id' => '', 'menu_aux' => '')
+);
