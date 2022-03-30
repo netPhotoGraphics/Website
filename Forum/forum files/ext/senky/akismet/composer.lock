@@ -193,7 +193,7 @@
             },
             "require": {
                 "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.4",
+                "guzzlehttp/psr7": "1.8.4",
                 "php": ">=5.5"
             },
             "require-dev": {
