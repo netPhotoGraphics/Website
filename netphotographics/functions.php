@@ -46,15 +46,18 @@ if (class_exists('themeSwitcher')) {
 	if ($personality) {
 		setOption('netPhotoGraphics_personality', $personality, false);
 	} else {
-		$personality = strtolower(getOption('netPhotoGraphics_personality'));
+		$personality = getOption('netPhotoGraphics_personality');
 	}
 } else {
-	$personality = strtolower(getOption('netPhotoGraphics_personality'));
+	$personality = getOption('netPhotoGraphics_personality');
+}
+if ($personality) {
+	$personality = strtolower($personality);
 }
 
 if (!in_array($personality, $personalities)) {
 	$persona = $personalities;
-	$personality = array_shift($persona);
+	$personality = reset($persona);
 }
 
 if (($_ef_menu = getOption('netPhotoGraphics_menu')) == 'effervescence' || $_ef_menu == 'zenpage') {
