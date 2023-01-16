@@ -2,6 +2,7 @@
 //	Required plugins:
 require_once(PLUGIN_SERVERPATH . 'image_album_statistics.php');
 require_once(PLUGIN_SERVERPATH . 'print_album_menu.php');
+require_once(PLUGIN_SERVERPATH . 'menu_manager.php');
 
 /**
  * Prints the scripts needed for the header
@@ -29,7 +30,7 @@ function jqm_printRSSlinks() {
 		<ul>
 			<?php
 			// these links must change to ones with rel="external" so they are actually loaded via jquerymobile!
-			if (extensionEnabled('npgCMS') && hasNews()) {
+			if (class_exists('CMS') && hasNews()) {
 				?>
 				<li class="rsslink"><a href="<?php echo html_encode(getRSSLink('News')); ?>" rel="external" data-ajax="false"><?php echo NEWS_LABEL; ?></a></li>
 				<?php
@@ -58,14 +59,13 @@ function jqm_printMainHeaderNav() {
 		<?php } ?>
 		<div data-role="navbar">
 			<ul>
-				<li><a href="<?php echo getCustomPageURL('gallery'); ?>"><?php echo gettext('Home'); ?></a></li>
 				<?php
-				if (extensionEnabled('npgCMS') && hasPages()) {
+				if (class_exists('CMS') && hasNews()) {
 					?>
 					<li><a href="<?php echo getNewsIndexURL(); ?>"><?php echo NEWS_LABEL; ?></a></li>
 					<?php
 				}
-				if (extensionEnabled('npgCMS') && hasPages()) {
+				if (class_exists('CMS') && hasPages()) {
 					?>
 					<li><a href="<?php echo getCustomPageURL('pagelist'); ?>"><?php echo gettext('Pages'); ?></a></li>
 					<?php

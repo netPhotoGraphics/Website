@@ -80,7 +80,7 @@ if (!defined('WEBPATH'))
 					?>
 					<br style="clear:both" />
 					<?php
-					if (function_exists('printSlideShowLink')) {
+					if (function_exists('printSlideShowLink') && $_current_image->isPhoto()) {
 						echo '<span id="slideshowlink">';
 						printSlideShowLink();
 						echo '</span>';
