@@ -7,7 +7,7 @@ npgFilters::register('theme_head', 'EF_head', 0);
 
 define('ALBUM_THMB_WIDTH', 170);
 define('ALBUM_THUMB_HEIGHT', 80);
-if (extensionEnabled('npgCMS')) {
+if (class_exists('CMS')) {
 	setOption('gallery_index', 1, false);
 }
 
@@ -20,8 +20,6 @@ foreach ($persona as $personality) {
 	if (file_exists(SERVERPATH . '/' . THEMEFOLDER . '/netphotographics/' . $personality . '/functions.php'))
 		$personalities[ucfirst(str_replace('_', ' ', $personality))] = $personality;
 }
-
-
 
 chdir(SERVERPATH . "/themes/" . basename(__DIR__) . "/styles");
 $filelist = safe_glob('*.txt');
@@ -41,13 +39,13 @@ if (class_exists('themeSwitcher')) {
 	if (!$themeColor) {
 		$themeColor = getOption('Theme_colors');
 	}
-
 	$personality = themeSwitcher::themeSelection('themePersonality', $personalities);
-	if ($personality) {
-		setOption('netPhotoGraphics_personality', $personality, false);
-	} else {
-		$personality = getOption('netPhotoGraphics_personality');
+	if (!$personality) {
+		$personality = getOption('mrtPhotoGraphics_personality');
 	}
+	$sets = getMenuSets();
+	$sets[] = ''; //	the built-in menu
+	$themeMenu = themeSwitcher::themeSelection('themeMenu', $sets);
 } else {
 	$personality = getOption('netPhotoGraphics_personality');
 }
@@ -140,18 +138,19 @@ function switcher_head($ignore) {
 			personality = $('#themePersonality').val();
 			window.location = '?themePersonality=' + personality;
 		}
-		// ]]> -->
+		function switchMenu() {
+			personality = $('#themeMenu').val();
+			window.location = '?themeMenu=' + personality;
+		}
+
 	</script>
 	<?php
 	return $ignore;
 }
 
 function switcher_controllink($ignore) {
-	global $personality, $personalities, $themecolors, $_gallery_page, $themeColor;
-	$themeColor = getNPGCookie('themeSwitcher_themeColor');
-	if (!$themeColor) {
-		list($personality, $themeColor) = getPersonality();
-	}
+	global $personality, $personalities, $themecolors, $_gallery_page, $themeColor, $themeMenu;
+	list($personality, $themeColor, $themeMenu) = getPersonality();
 	?>
 	<span id="themeSwitcher_effervescence">
 		<span title="<?php echo gettext("Effervescence color scheme."); ?>">
@@ -160,11 +159,6 @@ function switcher_controllink($ignore) {
 				<?php generateListFromArray(array($themeColor), $themecolors, false, false); ?>
 			</select>
 		</span>
-		<?php
-		if (!$personality) {
-			$personality = getOption('netPhotoGraphics_personality');
-		}
-		?>
 		<span title="<?php echo gettext("Effervescence image display handling."); ?>">
 			<?php echo gettext('Personality'); ?>
 			<select name="themePersonality" id="themePersonality" onchange="switchPersonality();">
@@ -287,15 +281,20 @@ function printNofM($what, $first, $last, $total) {
 }
 
 function getPersonality() {
-	global $themeColor, $themecolors;
+	global $themeColor, $themecolors, $personality, $themeMenu;
 	if (!$themeColor) {
 		$themeColor = getOption('Theme_colors');
 	}
 	if (!in_array($themeColor, $themecolors)) {
 		$themeColor = 'kish-my father';
 	}
-	$personality = getOption('netPhotoGraphics_personality');
-	return array($personality, $themeColor);
+	if (!$personality) {
+		$personality = getOption('effervescence_personality');
+	}
+	if (!$themeMenu) {
+		$themeMenu = getOption('effervescence_menu');
+	}
+	return array($personality, $themeColor, $themeMenu);
 }
 
 function printThemeInfo() {
