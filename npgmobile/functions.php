@@ -201,7 +201,7 @@ function jqm_printImageAlbumCount() {
  */
 function printZDSearchToggleJS() {
 	?>
-	<script type="text/javascript">
+	<script>
 		// <!-- <![CDATA[
 		function toggleExtraElements(category, show) {
 			if (show) {
