@@ -1,9 +1,0 @@
-services:
-    phpbb.googleanalytics.listener:
-        class: phpbb\googleanalytics\event\listener
-        arguments:
-            - '@config'
-            - '@template'
-            - '@user'
-        tags:
-            - { name: event.listener }
